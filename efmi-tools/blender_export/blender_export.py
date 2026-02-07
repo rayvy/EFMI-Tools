@@ -80,7 +80,8 @@ class ModExporter:
                 Please do note that to dump character LODs correctly you should switch to another character and take a few steps back.
             """)
         
-        self.skeleton_type = SkeletonType.Merged if self.cfg.mod_skeleton_type == 'MERGED' else SkeletonType.PerComponent
+        # self.skeleton_type = SkeletonType.Merged if self.cfg.mod_skeleton_type == 'MERGED' else SkeletonType.PerComponent
+        self.skeleton_type = SkeletonType.PerComponent
 
         self.merged_object = MergedObject(None, None, [], MergedObjectShapeKeys(), self.skeleton_type)
 

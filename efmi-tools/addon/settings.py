@@ -135,7 +135,7 @@ class EFMI_Settings(bpy.types.PropertyGroup):
             ('MERGED', 'Merged', 'Imported mesh will have unified list of Vertex Groups, allowing to weight any vertex of any component to any bone. Mod Upsides: easy to weight, custom skeleton scale support, advanced weighting support (i.e. long hair to cape). Mod Downsides: model will be updated with 1 frame delay, mod will pause while there are more than one of same modded object on screen. Suggested usage: new modders, character or echo mods with complex weights.'),
             ('COMPONENT', 'Per-Component', 'Imported mesh will have its Vertex Groups split into per component lists, restricting weighting of any vertex only to its parent component. Mod Upsides: no 1-frame delay for model updates, minor performance gain. Mod downsides: hard to weight, very limited weighting options, no custom skeleton scale support. Suggested usage: weapon mods and simple retextures.'),
         ],
-        default=0,
+        default=1,
     ) # type: ignore
 
     skip_empty_vertex_groups: BoolProperty(
