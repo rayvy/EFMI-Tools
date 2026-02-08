@@ -28,6 +28,11 @@ def trigger_mod_export():
     if bpy.context.scene.efmi_tools_settings.export_on_reload:
         print('Triggered export on addon reload...')
         bpy.ops.efmi_tools.export_mod()
+
+
+def override_skeleton_type():
+    cfg = bpy.context.scene.efmi_tools_settings
+    cfg.import_skeleton_type = 'COMPONENT'
     
 
 def register():
@@ -37,6 +42,7 @@ def register():
     
     # prefs = bpy.context.preferences.addons[__package__].preferences
     bpy.app.timers.register(trigger_mod_export, first_interval=0.1)
+    bpy.app.timers.register(override_skeleton_type, first_interval=0.1)
 
 
 def unregister():
@@ -46,3 +52,6 @@ def unregister():
 
     if bpy.app.timers.is_registered(trigger_mod_export):
         bpy.app.timers.unregister(trigger_mod_export)
+
+    if bpy.app.timers.is_registered(override_skeleton_type):
+        bpy.app.timers.unregister(override_skeleton_type)
