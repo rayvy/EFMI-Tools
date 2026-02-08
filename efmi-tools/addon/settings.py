@@ -48,7 +48,7 @@ class EFMI_Settings(bpy.types.PropertyGroup):
         items=[
             ('EXPORT_MOD', 'Export Mod', 'Export selected collection as EFMI mod'),
             ('IMPORT_OBJECT', 'Import Object', 'Import .ib ad .vb files from selected directory'),
-            ('IMPORT_LOD_DATA', 'Import LoDs From Dump', 'Import LoDs data from the selected frame dump directory to Metadata.json'),
+            ('EXTRACT_LOD_DATA', 'Extract LoDs From Dump', 'Extract LoDs data from the selected Open World frame dump directory and import it to Metadata.json'),
             ('EXTRACT_FRAME_DATA', 'Extract Objects From Dump', 'Extract components of all EFMI-compatible objects from the selected frame dump directory'),
             ('TOOLS_MODE', 'Toolbox', 'Bunch of useful object actions'),
         ],

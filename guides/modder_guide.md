@@ -13,7 +13,7 @@ It assumes that you already have basic knowledge about 3dmigoto-based modding, s
 1. <a href="#character-menu-dump-creation">Create frame dump in Character Menu.</a>
 2. <a href="#objects-extraction-from-character-menu-dump">Extract objects from dump.</a>
 3. <a href="#open-world-dump-creation">Create dump in Open World to prepare LoDs data.</a>
-4. <a href="#lods-data-import-to-extracted-object">Import LoDs data to extracted object.</a>
+4. <a href="#lods-data-import-to-extracted-object">Extract LoDs data and save it to extracted object.</a>
 5. <a href="#extracted-object-import">Import character object to Blender.</a>
 6. <a href="#imported-object-editing">(Optional) Edit components (meshes) in Blender.</a>
     * <a href="#component-naming">Component Naming</a>
@@ -63,10 +63,10 @@ It assumes that you already have basic knowledge about 3dmigoto-based modding, s
 ## LoDs Data Import To Extracted Object
 
 1. Go to **Sidebar > Tool > EFMI Tools**.
-2. Select Mode: **Import LoDs From Dump**.
+2. Select Mode: **Extract LoDs From Dump**.
 3. Configure **Frame Dump** field: input path to **Open World** dump folder (i.e. `Endmin Open World Dump`).
 4. Configure **Object Soures** field: input path to extracted object folder generated on step **#2** (i.e. `Endmin Sources`).
-4. Press **[Import LoDs From Dump]** button.
+4. Press **[Extract LoDs From Dump]** button.
 5. After ~15 seconds Blender will respond with success message.  
     * You can view details in **Blender Top Menu > Window > Toggle System Console** window.
     * If import results in error instead, try making 1 extra dump. If it errors again, it means there is some issue with dumped objects handling. Please report them.

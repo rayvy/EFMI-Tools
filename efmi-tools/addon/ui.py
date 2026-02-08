@@ -92,8 +92,8 @@ class EFMI_TOOLS_PT_SIDEBAR(bpy.types.Panel):
         elif cfg.tool_mode == 'IMPORT_OBJECT':
             self.draw_menu_import_object(context)
 
-        elif cfg.tool_mode == 'IMPORT_LOD_DATA':
-            self.draw_menu_import_lod_data(context)
+        elif cfg.tool_mode == 'EXTRACT_LOD_DATA':
+            self.draw_menu_EXTRACT_LOD_DATA(context)
 
         elif cfg.tool_mode == 'EXTRACT_FRAME_DATA':
             self.draw_menu_extract_frame_data(context)
@@ -205,7 +205,7 @@ class EFMI_TOOLS_PT_SIDEBAR(bpy.types.Panel):
 
         layout.row().operator(EFMI_ExtractFrameData.bl_idname)
 
-    def draw_menu_import_lod_data(self, context):
+    def draw_menu_EXTRACT_LOD_DATA(self, context):
         cfg = context.scene.efmi_tools_settings
         layout = self.layout
         
@@ -223,19 +223,40 @@ class EFMI_TOOLS_PT_SIDEBAR(bpy.types.Panel):
 
         layout.row()
 
+
+        layout.row().operator(EFMI_ImportLODData.bl_idname)
+
+
+class EFMI_TOOLS_PT_SidePanelAdvancedLodsExtraction(bpy.types.Panel):
+    bl_label = "Advanced"
+    bl_parent_id = "EFMI_TOOLS_PT_SIDEBAR"
+    # bl_options = {'DEFAULT_CLOSED'}
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_category = "EFMI Tools"
+    bl_order = 10
+
+    @classmethod
+    def poll(cls, context):
+        cfg = context.scene.efmi_tools_settings
+        return cfg.tool_mode == 'EXTRACT_LOD_DATA'
+
+    def draw(self, context):
+        layout = self.layout
+        cfg = context.scene.efmi_tools_settings
+
+        layout.row().prop(cfg, 'skip_lods_below_error_threshold')
+
+        layout.row().prop(cfg, 'import_matched_lod_objects')
+
+        layout.row()
+
         layout.row().prop(cfg, 'geo_matcher_sample_size')
         layout.row().prop(cfg, 'geo_matcher_sensivity')
 
         layout.row()
 
         layout.row().prop(cfg, 'vg_matcher_candidates_count')
-
-        layout.row()
-
-        layout.row().prop(cfg, 'import_matched_lod_objects')
-
-        layout.row().operator(EFMI_ImportLODData.bl_idname)
-
 
 
 class EFMI_TOOLS_PT_SidePanelPartialExport(bpy.types.Panel):
@@ -517,7 +538,7 @@ class EFMI_ImportLODData(bpy.types.Operator):
     """
     Import object LoDs from frame dump
     """
-    bl_idname = "efmi_tools.import_lod_data"
+    bl_idname = "efmi_tools.extract_lod_data"
     bl_label = "Import LoDs From Dump"
     bl_description = "Import object LoDs from frame dump"
 
