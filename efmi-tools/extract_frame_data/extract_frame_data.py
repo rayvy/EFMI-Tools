@@ -368,7 +368,7 @@ def extract_frame_data(cfg, extract_lods=False):
                 model.set_data(obj, mesh, matched_mesh.index_buffer, matched_mesh.vertex_buffer, None, mirror_mesh=cfg.mirror_mesh, mesh_scale=1.00, mesh_rotation=(0, 0, 0), import_tangent_data_to_attribute=False)
                 imported_objects.append(obj)
 
-            if best_similarity < cfg.geo_matcher_error_threshold:
+            if best_similarity < cfg.geo_matcher_error_threshold and not cfg.skip_lods_below_error_threshold:
                 raise ConfigError('lod_frame_dump_folder', dedent(f"""
                     Best matching LoD for Component {component_id} has {best_similarity:.2f}% similarity!
                     It is below configured {cfg.geo_matcher_error_threshold:.2f}% Geometry Matcher Error Threshold.

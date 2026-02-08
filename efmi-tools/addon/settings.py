@@ -177,6 +177,12 @@ class EFMI_Settings(bpy.types.PropertyGroup):
         subtype='PERCENTAGE',
     ) # type: ignore
 
+    skip_lods_below_error_threshold: BoolProperty(
+        name="Skip LoDs Below Error Threshold",
+        description="Skip LoD with similarity percentage below Geometry Matcher Error Threshold instead of aborting LoDs extraction process.",
+        default=False,
+    ) # type: ignore
+
     geo_matcher_sample_size: IntProperty(
         name="Geometry Matcher Sample Size",
         description="Number of uniform geometry samples used for LoD mesh matching",
